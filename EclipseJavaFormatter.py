@@ -11,6 +11,8 @@ KEY_VERBOSE = 'verbose'
 KEY_CONFIG = 'config_file'
 KEY_RESTORE_ENDINGS = 'restore_line_endings'
 
+KEY_JAVASCRIPT = 'javascript_formatting'
+
 KEY_SORT_IMPORTS = 'sort_imports'
 KEY_SORT_ORDER = 'sort_imports_order'
 
@@ -106,7 +108,12 @@ class DoEclipseFormatJavaCommand(sublime_plugin.TextCommand):
       args.append('-nosplash')
 
     args.append('-application')
-    args.append('org.eclipse.jdt.core.JavaCodeFormatter')
+    is_javascript = _get_setting(self.view, KEY_JAVASCRIPT)
+    if is_javascript:
+	    args.append('org.eclipse.wst.jsdt.core.JavaCodeFormatter')
+    else
+	    args.append('org.eclipse.jdt.core.JavaCodeFormatter')
+
 
     is_verbose = _get_setting(self.view, KEY_VERBOSE)
     if is_verbose:

@@ -32,5 +32,8 @@
   // just in case your code has Windows line endings,
   // but you are working on a Mac, or some similar
   // situation.
-  "restore_line_endings": false
+  "restore_line_endings": false,
+
+  // Uses Javascript formatter instead
+  "javascript_formatting": false
 }
